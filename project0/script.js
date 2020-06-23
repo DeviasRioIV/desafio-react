@@ -22,6 +22,12 @@ button.addEventListener( 'click', (e) => {
 	// Create list element
 	let liElement = document.createElement("li")
 
+	// Add checkbox to list element
+	let checkbox = document.createElement("input")
+	checkbox.type = 'checkbox'
+	checkbox.addEventListener( 'click', uncheckTodo)
+	liElement.appendChild(checkbox)
+
 	// Add text to list element
 	let liContent = document.createTextNode("Do " + itemCount)
 	liElement.appendChild(liContent)
@@ -30,13 +36,13 @@ button.addEventListener( 'click', (e) => {
 	// Add button to list element
 	let button = document.createElement("button")
 	button.innerHTML = 'X'
-	button.addEventListener( 'click', uncheckTodo)
+	button.addEventListener( 'click', deleteTodo)
 	liElement.appendChild(button)
 
 });
 
 /*
-	"Click" event callback for remove TODOs button
+	"Click" event callback for TODO checkbox
 
 	Toggles items "checked" class and updates the item unchecked count
 */
@@ -55,4 +61,27 @@ function uncheckTodo() {
 
 	// Update checked count view
 	uncheckedCountSpan.innerHTML = itemUncheckCount
+}
+
+/*
+	"Click" event callback for remove TODOs button
+
+	Removes TODO item making sure unchecked count gets updated
+*/
+function deleteTodo() {
+
+	// Check if unchecked count has to be updated after removing the todo
+	let container = this.parentNode
+
+	if ( container.classList.contains('checked') ) {
+		itemUncheckCount--;
+		uncheckedCountSpan.innerHTML = itemUncheckCount
+	}
+
+	// Remove the todo
+	this.parentNode.parentNode.removeChild(container);
+
+	// Decrease item count
+	itemCount--
+	itemCountSpan.innerHTML = itemCount
 }

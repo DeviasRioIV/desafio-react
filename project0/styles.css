@@ -69,7 +69,3 @@ ul {
   border: none!important;
   outline: none!important;
 }
-
-#todo-list li.checked button {
-  background-color: #999;
-}
