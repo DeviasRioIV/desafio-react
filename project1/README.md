@@ -1,3 +1,33 @@
+# About This Branch
+
+This branch attempts to fix an error thrown while attempting to run the `expo start` command [Github Issue](https://github.com/expo/expo-cli/issues/1074).
+
+## What is different about this branch
+
+This branch has the latest version of the expo-cli, therefore, all dependencies are up to date to it's latest versions:
+
+- `expo`
+- `expo-status-bar`
+- `prop-types`
+- `react`
+- `react-dom`
+- `react-native`
+- `react-native-web`
+- `@babel/core`
+- `babel-preset-expo`
+
+Babel config is also at it's latest configuration ('babel-preset-expo').
+
+Also, app.json "sdkVersion" property value is up to date.
+
+## On which environments did this error occur
+
+- Windows 10 x64 + node v12.18.1
+
+## How can I run expo with this branch?
+
+Run `npm install` command and `expo start` should be working after that.
+
 # Project 1 - Pomodoro Timer
 For this project, you'll be implementing a Pomodoro timer. This timer will help
 people trying to use the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
