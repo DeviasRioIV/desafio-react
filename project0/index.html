@@ -11,9 +11,17 @@
         <span>Item count: <span id="item-count">0</span></span>
         <span>Unchecked count: <span id="unchecked-count">0</span></span>
       </div>
+      <input type="checkbox" id="cbox" value="checkbox" > <label for="cbox">Todo Marcado</label>
+
+      <input type="checkbox" id="cbox2" value="checkbox2"> <label for="cbox2">Delete Todo</label>
+
       <button class="button center" onClick="newTodo()">New TODO</button>
       <ul id="todo-list" class="todo-list"></ul>
+      
+      <button class="button center" onClick="deleteTodo()">Delete TODO</button>
+      <ul id="todo-delete" class="todo-delete"></ul>
     </div>
+    
     <script src="./script.js"></script>
   </body>
 </html>
