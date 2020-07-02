@@ -41,26 +41,31 @@ ul {
   padding: 10px 20px;
 }
 
-.todo-list {
-  flex: 1 1 0;
-  margin-top: 20px;
+#todo-list {
+  width: 300px;
+  margin: 20px auto 0;
   padding: 20px;
+  flex: 1 1 0;
   overflow-y: auto;
 }
 
-.todo-delete {
-  margin: 10px;
+#todo-list li {
+  padding: 10px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.todo-checkbox {
-  margin: 10px;
+#todo-list li.checked {
+  color: #999;
+  text-decoration: line-through;
 }
 
-.todo-container {
-  padding: 20px;
-  border-bottom: 1px solid #333;
-}
-
-.todo-container:first-of-type {
-  border-top: 1px solid #333;
+#todo-list li button {
+  padding: 5px 10px;
+  background: #D00;
+  color: #FFF;
+  cursor: pointer;
+  border: none!important;
+  outline: none!important;
 }
