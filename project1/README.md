@@ -1,3 +1,7 @@
+# APP Demo
+
+![APP DEMO](./assets/demo.gif)
+
 # About This Branch
 
 This branch attempts to fix an error thrown while attempting to run the `expo start` command [Github Issue](https://github.com/expo/expo-cli/issues/1074).
