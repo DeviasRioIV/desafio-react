@@ -11,8 +11,12 @@
         <span>Item count: <span id="item-count">0</span></span>
         <span>Unchecked count: <span id="unchecked-count">0</span></span>
       </div>
+      <br>
+      <input type="text" id="todo-item" class="todo-text" onkeypress="checkEnter(event)" />
+      <br>
       <button class="button center" onClick="newTodo()">New TODO</button>
-      <ul id="todo-list" class="todo-list"></ul>
+      <ul id="todo-list" class="todo-list">
+      </ul>
     </div>
     <script src="./script.js"></script>
   </body>
