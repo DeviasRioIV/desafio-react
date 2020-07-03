@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Separator } from 'react-native';
+import { StyleSheet, Text, View, Button, Spacer } from 'react-native';
 
 
 class Timer extends React.Component {
   constructor(){
     super()
     this.state = {
-      time: 25,
+      time: 1500,
       isCountingDown: false,
     }
     this.interval = null
@@ -36,28 +36,40 @@ class Timer extends React.Component {
   }
 
   restartTimer() {
-    clearInterval(this.interval)
-    this.setState(prevState => ({
-      time: 25,
+    this.stopTimer()
+    console.log("restart")
+    this.setState({
+      time: 1500,
       isCountingDown: false
-    }))
+    })
   }
 
   stopTimer() {
-    console.log("stop")
-    clearInterval(this.interval)
-    this.setState({
-      isCountingDown: false
-    })
+    if (this.state.isCountingDown) {
+      console.log("stop")
+      clearInterval(this.interval)
+      this.setState({
+        isCountingDown: false
+      })
+    }
   } 
 
+  componentWillUnmount(){
+    clearInterval(this.interval)
+  }
+  
   render() {
+    let min = Math.floor(this.state.time / 60)  //minutes
+    let sec = this.state.time % 60 //seconds
     return(
       <View>
-        <Button title= "Start" onPress = {this.startTimer} />
-        <Text style = {styles.time}>{this.state.time}</Text>
+        <Button title= "Start/Continue" onPress = {this.startTimer} />
+        <Text style= {styles.title}>{`${min < 10 ? ('0' + min.toString()) : min} : ${sec < 10 ? ('0' + sec.toString()) : sec }`}</Text>
         <Button title= "Restart" onPress = {this.restartTimer} />
-        <Button title= "Stop" onPress = {this.stopTimer} />
+        <Button
+        color= "#d8df07" 
+        title= <Text style = {{color: "#000000" }}>{"Stop"}</Text> 
+        onPress = {this.stopTimer} />
       </View>
     )
   }
@@ -81,15 +93,19 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <Button 
           color= "#ff5c5c" 
-          title= "¿Demasiado daño a la vista? Salir" onPress = {this.toggleCounter} />
-          <Timer/>
-        </View>
+          title= <Text style = {{color: "#000000" }}>
+          {"¿Demasiado daño a la vista? Salir"}</Text>
+          onPress = {this.toggleCounter} />
+          <View style={styles.timer}>
+            <Timer/>
+          </View>
+        </View>      
       );
     } else {
       return (
         <View style={styles.container}>
           <Text style= {styles.title}>{"El Pomodoro"}</Text>
-          <Button title= "Arriesgarce?" onPress = {this.toggleCounter} />
+          <Button title= "¿Arriesgarse?" onPress = {this.toggleCounter} />
         </View>
       );
     }
@@ -103,10 +119,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  time: {
-    fontSize: 46,
-  },
   title: {
     fontSize: 50
+  },
+  timer: {
+    marginTop: 10
   }
 });
